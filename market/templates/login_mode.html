@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Login User/Admin
+{% endblock %}
+
+{% block content %}
+<br>
+    <div class="container">
+<table>
+    <tbody>
+        <tr>
+            <td><a href="{{ url_for('user_login') }}"><button class="btn btn-outline btn-info">Login as User</button></a></td>
+            <td><a href="{{ url_for('admin_login') }}"><button class="btn btn-outline btn-success">Login as Admin</button></a></td>
+        </tr>
+    </tbody>
+</table>
+    </div>
+{% endblock %}
+

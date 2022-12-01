@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Admin Home Page
+{% endblock %}
+
+{% block content %}
+    <br>
+    <a href="{{ url_for('add_item') }}"><button class="btn btn-outline btn-info">Add Item</button></a>
+    </br></br>
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <!-- Your Columns HERE -->
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Barcode</th>
+                <th scope="col">Price</th>
+                <th scope="col">Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% set i = namespace(value=1) %}
+            <!-- Your rows inside the table HERE: -->
+            {% for item in items %}
+                <tr>
+                    <td>{{ i.value }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.barcode }}</td>
+                    <td>{{ item.price }}</td>
+                    <td>
+                        <a href='edit_item/{{item.id}}'><button class="btn btn-outline btn-info">Edit</button></a>
+                        <a href='delete_item/{{item.id}}'><button class="btn btn-outline btn-success">Delete</button></a>
+                    </td>
+                </tr>
+                {% set i.value=i.value+1 %}
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
